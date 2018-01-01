@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="userDbHelpListener"
+            type="com.example.db.inface.UserDbHelpListener"/>
+    </data>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+
+        <EditText
+            android:id="@+id/edtName"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="清输入姓名"
+            android:maxLines="1"
+            android:textColor="#333333"
+            android:textSize="17sp"/>
+
+        <Button
+            android:id="@+id/btnInsert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->userDbHelpListener.onInsert()}"
+            android:text="添加"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/btnDelete"
+            app:layout_constraintTop_toBottomOf="@+id/edtName"
+            app:layout_constraintVertical_weight="1"/>
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->userDbHelpListener.onDelete()}"
+            android:text="全部删除"
+            app:layout_constraintLeft_toRightOf="@+id/btnInsert"
+            app:layout_constraintRight_toLeftOf="@id/btnQuery"
+            app:layout_constraintTop_toBottomOf="@+id/edtName"
+            app:layout_constraintVertical_weight="1"/>
+
+
+        <Button
+            android:id="@+id/btnQuery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->userDbHelpListener.onQuery()}"
+            android:text="查询"
+            app:layout_constraintLeft_toRightOf="@+id/btnDelete"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtName"
+            app:layout_constraintVertical_weight="1"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnQuery"/>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>
